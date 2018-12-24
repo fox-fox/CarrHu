@@ -57,7 +57,7 @@ export default {
 .m_bg{position: absolute;left: 0;top: 0;width: 100%;height: 100%;z-index: 1;background: #170e0b;opacity: 0.5;}
 .Details{height: 100%;position: absolute;left:0;top:0;width: 100%;}
 .m-newsong,.m-song{position:absolute;top:0;left:0;right:0;bottom:0;min-width:320px;overflow:hidden}
-.m-song-bg{background-position:50%;background-repeat:no-repeat;background-size:auto 100%;-webkit-transform:scale(1.5);transform:scale(4.2);-webkit-transform-origin:center top;transform-origin:center top;position:fixed;left:0;right:0;top:0;height:100%;overflow:hidden;z-index:-1;-webkit-transition:opacity .3s linear;transition:opacity .3s linear;opacity:1}
+.m-song-bg{background:url(/_nuxt/assets/img/bg01.jpg) no-repeat center center;background-position:50%;background-repeat:no-repeat;background-size:auto 100%;-webkit-transform:scale(1.5);transform:scale(4.2);-webkit-transform-origin:center top;transform-origin:center top;position:fixed;left:0;right:0;top:0;height:100%;overflow:hidden;z-index:-1;-webkit-transition:opacity .3s linear;transition:opacity .3s linear;opacity:1}
 .m-song_newfst{position:relative;padding-bottom:12px;box-sizing:border-box;height:100%}
 .m-song-wrap{padding-top:70px;overflow: hidden;}
 .m-song-disc{position:relative;width:296px;height:296px;margin:0 auto;z-index: 20;}

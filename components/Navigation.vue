@@ -10,7 +10,7 @@
                 <recommend />
             </li>
             <li v-bind:class='{active : this_index == 1 }'>
-                2
+                <ReGe />
             </li>
             <li v-bind:class='{active : this_index == 2 }'>
                 3
@@ -29,9 +29,11 @@
 
 <script>
 import recommend from '~/components/navig/Recommend.vue'
+import ReGe from '~/components/navig/HotSongList.vue'
 export default {
     components:{
-        recommend
+        recommend,
+        ReGe
     },
     data(){
         return{
