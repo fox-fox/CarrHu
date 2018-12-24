@@ -28,7 +28,7 @@
             <h3 class="u-smtitle">歌曲列表</h3>
             <ol class="u-songs">
                 <li class="u-song" v-for="(item,index) in songs" v-bind:key="index">
-                    <nuxt-link :to="{name:'Player-Details',params:{list_url:item.url}}">
+                    <nuxt-link :to="{name:'Player-Details',params:{list_url:item.url,list_pic:item.pic}}">
                         <div class="sgi_fl">{{index+1}}</div>
                         <div class="sgi_fr f-bd f-bd-btm">
                             <div class="sgich_fl">
