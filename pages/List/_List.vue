@@ -37,7 +37,7 @@
                             </div>
                             <div class="sgich_fr">
                                 <span class="u-hmsprt sgich_ply"></span>
-                            </div>    
+                            </div>   
                         </div>    
                     </nuxt-link>
                 </li>

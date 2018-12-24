@@ -15,8 +15,8 @@
                     <div class="m-song-plybtn" v-show="toggleShow"></div>
                 </div>
                 <div class="m-song-clickarea" @click="Switch"></div>
-                <div id="audio" class="m_audio" ref="audioo">
-                    <audio :src="$route.params.list_url" autoplay controls="controls"></audio>
+                <div class="m_audio" ref="audioo">
+                    <audio id="audio" :src="$route.params.list_url" autoplay controls="controls"></audio>
                 </div>
             </div>
         </div>
@@ -29,21 +29,21 @@ export default {
         return{
             toggleShow:false,
             toClass:false,
-            isPlaying:true
+            status:true
         }
     },
     methods:{
         Switch:function(){
             this.toggleShow = this.toggleShow ? false : true;
             this.toClass = this.toClass ? false : true;
-
+            var self = this;
             var audio =document.querySelector('#audio');
-            if(this.isPlaying){
-                audio.pause();
-                audio.currentTime = 0;
-            }else{
+            if(self.status == false) {     //初始状态未播放，点击播放
                 audio.play();
-                this.isPlaying = true;
+                self.status = true
+            }else{                  //已经在播放，点击暂停
+                audio.pause();
+                self.status = false
             }
         }
     }
@@ -53,6 +53,7 @@ export default {
 
 
 <style scoped>
+.m_audio{position:absolute;z-index:-10;opacity:0}
 .m_bg{position: absolute;left: 0;top: 0;width: 100%;height: 100%;z-index: 1;background: #170e0b;opacity: 0.5;}
 .Details{height: 100%;position: absolute;left:0;top:0;width: 100%;}
 .m-newsong,.m-song{position:absolute;top:0;left:0;right:0;bottom:0;min-width:320px;overflow:hidden}
