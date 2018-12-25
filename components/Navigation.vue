@@ -13,7 +13,7 @@
                 <ReGe />
             </li>
             <li v-bind:class='{active : this_index == 2 }'>
-                3
+                <sousuo />
             </li>
 
 
@@ -30,10 +30,12 @@
 <script>
 import recommend from '~/components/navig/Recommend.vue'
 import ReGe from '~/components/navig/HotSongList.vue'
+import sousuo from '~/components/navig/Search.vue'
 export default {
     components:{
         recommend,
-        ReGe
+        ReGe,
+        sousuo
     },
     data(){
         return{
