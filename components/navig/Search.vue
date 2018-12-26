@@ -149,6 +149,7 @@ label,summary{cursor:default}
 .f-thide{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;word-break:normal}
 .sgtl{font-size:17px}
 .sginfo{font-size:12px;color:#888;padding: 3px 0;}
+.u-hmsprt{background:url(//s3.music.126.net/m/s/img/index_icon_2x.png?5207a28…) no-repeat;background-size:166px 97px}
 .sgchfr{display:-webkit-box;display:-webkit-flex;display:flex;-webkit-box-align:center;-webkit-align-items:center;align-items:center;padding:0 10px}
 .sgchply{display:inline-block;width:22px;height:22px;background-position:-24px 0}
 .f-bd:after{position:absolute;z-index:2;content:"";top:0;left:0;pointer-events:none;box-sizing:border-box;width:100%;height:100%;-webkit-transform-origin:top left;transform-origin:top left;border:0 solid rgba(0,0,0,.1)}

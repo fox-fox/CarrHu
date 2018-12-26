@@ -28,7 +28,7 @@
             <h3 class="u-smtitle">歌曲列表</h3>
             <ol class="u-songs">
                 <li class="u-song" v-for="(item,index) in songs" v-bind:key="index">
-                    <nuxt-link :to="{name:'Player-Details',params:{list_url:item.url,list_pic:item.pic}}">
+                    <nuxt-link :to="{name:'Player-Details',params:{list_url:item.url,list_pic:item.pic,list_id:item.id}}">
                         <div class="sgi_fl">{{index+1}}</div>
                         <div class="sgi_fr f-bd f-bd-btm">
                             <div class="sgich_fl">
@@ -110,7 +110,7 @@ export default {
 .lstit_tag:after{position: absolute; z-index: 2;content: ""; top: 0;left: 0;pointer-events: none;box-sizing: border-box; width: 100%; height: 100%;-webkit-transform-origin: top left;transform-origin: top left;border: 0 solid rgba(0,0,0,.1);border-radius: 9999px;border-width: 1px;width: 200%;height: 200%;-webkit-transform: scale(.5);transform: scale(.5);}
 .u-intro { position: relative;padding-bottom: 18px;line-height: 19px; color: #666;}
 .f-brk {word-wrap: break-word;word-break: break-all;white-space: normal;}
-.list_i{font-size: 14px;color: #666}
+.list_i{font-size: 14px;color: #666;overflow: hidden}
 
 .pylst_list{}
 .u-smtitle{height: 23px;line-height: 23px;padding: 0 10px; font-size: 12px;color: #666;background-color: #eeeff0;}

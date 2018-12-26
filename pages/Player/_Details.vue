@@ -18,6 +18,9 @@
                 <div class="m_audio" ref="audioo">
                     <audio id="audio" :src="$route.params.list_url" autoplay controls="controls"></audio>
                 </div>
+                <div class="download">
+                    <a href="javascript:;" @click="download"> 下载</a>
+                </div>
             </div>
         </div>
     </div>
@@ -45,6 +48,21 @@ export default {
                 audio.pause();
                 self.status = false
             }
+        },
+        download(e){
+            let url = this.$route.params.list_url; ///当前播放歌曲url路径
+            let _this = this;
+            console.log(this.$route.params.list_id);
+            _this.$axios
+            .get(
+            "https://api.bzqll.com/music/netease/url?key=579621905&id="+this.$route.params.list_id+"&br=999000"
+            )
+            .then(function(response) {
+                
+                console.log(response.data)
+            }).catch(function(error) {
+                console.log(error);
+            });
         }
     }
 }
@@ -53,6 +71,8 @@ export default {
 
 
 <style scoped>
+.download{position: fixed;top: 20px;right: 30px;z-index: 100;}
+.download a{color: #ffffff;font-size: 20px;text-decoration: none}
 .m_audio{position:absolute;z-index:-10;opacity:0}
 .m_bg{position: absolute;left: 0;top: 0;width: 100%;height: 100%;z-index: 1;background: #170e0b;opacity: 0.5;}
 .Details{height: 100%;position: absolute;left:0;top:0;width: 100%;}
