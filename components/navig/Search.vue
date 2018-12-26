@@ -5,8 +5,8 @@
                 <form class="m-input f-bd f-bd-btm" method="get" action="#">
                     <div class="inputcover">
                         <i class="u-svg u-svg-srch"></i>
-                        <input id="my_input"   type="search" name="search" class="input" placeholder="" value="" autocomplete="off">
-                        <label class="holder">搜索歌曲、歌手、专辑</label>
+                        <input id="" @focus="focus1" @blur="blur1" @input="inputFun" type="search"  class="input" placeholder="" value="" >
+                        <label class="holder" v-bind:class="{active : isdisplay == true}" >搜索歌曲、歌手、专辑</label>
                         <div class="close">
                             <i class="u-svg u-svg-empty"></i>
                         </div>
@@ -14,12 +14,30 @@
                 </form>
                 <div class="m-default">
                     <section class="m-hotlist">
-                        <h3 class="title">{{ssage}}</h3>
+                        <h3 class="title">{{ssage}} <a @click="search1">{{emm}}</a></h3>
                         <ul class="list">
                             <li class="item f-bd f-bd-full">
                                 <a class="link" href="javascript:void(0);">圣诞</a>
                             </li>
                         </ul>
+                         <div class="hotcont">
+                            <ul class="m-sglst" :class="{active : isActive == true}">
+                                <li v-for="(item, index) in pro" :key="index">
+                                    <nuxt-link :to="{name:'Player-Details',params:{list_url:item.url,list_pic:item.pic}}">
+                                        <div class="sgfl sgfl-cred">{{index+1}}</div>
+                                        <div class="sgfr f-bd f-bd-btm">
+                                            <div class="sgchfl">
+                                                <div class="f-thide sgtl">{{item.name}}</div>
+                                                <div class="f-thide sginfo">{{item.singer}}</div>
+                                            </div>
+                                            <div class="sgchfr">
+                                                <span class="u-hmsprt sgchply"></span>
+                                            </div>
+                                        </div>
+                                    </nuxt-link>    
+                                </li>
+                            </ul>
+                        </div>
                     </section>
                 </div>
             </div>
@@ -32,13 +50,56 @@
 export default {
     data(){
         return{
-            ssage:'热门搜索'
+            ssage:'热门搜索',
+            message:'',
+            isdisplay: false,
+            isActive:true,
+            emm:'',
+            pro:[{
+                name:'',
+                singer:'',
+                id:'',
+                url:'',
+                lrc:''
+            }]
         }
     },
     methods:{
-        my_input(){
-            console.log(this.ssage)
+        inputFun(e){
+            this.ssage = '搜索';
+            this.emm = e.target.value;
+            if(e.target.value.length > 0){
+                this.isdisplay = true;
+            }
+        },
+        focus1(e){
+            this.isdisplay = true
+        },
+        blur1(e){
+            if(e.target.value.length <= 0){
+                this.isdisplay = false;
+                this.ssage ='热门搜索'
+            }
+        },
+        search1(){
+            if(this.emm.length > 0){
+                var _this = this;
+                _this.$axios
+                .get(
+                "https://api.bzqll.com/music/netease/search?key=579621905&s="+this.emm+"&type=song&limit=100&offset=0"
+                )
+                .then(function(response) {
+                    _this.pro = response.data.data;
+                    _this.isActive = false;
+                    console.log(_this.pro)
+                }).catch(function(error) {
+                    console.log(error);
+                });
+            }
         }
+    },
+    mounted(){
+        
     }
 }
 </script>
@@ -62,6 +123,7 @@ input,select,textarea{-webkit-appearance:none;border-radius:0;border:0;backgroun
 .m-input .input{width:100%;height:30px;line-height:18px;background:0 0;font-size:14px;color:#333}
 .m-input .holder{position:absolute;left:30px;top:5px;font-size:14px;color:#c9c9c9;background:0 0;pointer-events:none}
 label,summary{cursor:default}
+.holder.active{display: none;}
 .m-input .close{position:absolute;right:0;top:0;width:30px;height:30px;line-height:28px;text-align:center}
 .u-svg{display:inline-block;vertical-align:middle;background-position:0 0;background-size:contain;background-repeat:no-repeat}
 .m-input .u-svg-empty{display:none;vertical-align:middle}
@@ -78,5 +140,23 @@ label,summary{cursor:default}
 .u-svg{display:inline-block;vertical-align:middle;background-position:0 0;background-size:contain;background-repeat:no-repeat}
 .m-input .u-svg-empty.z-show{display:inline-block}
 .m-input .u-svg-empty.z-show{display: inline-block;}
+.hotcont{position: relative;}
+.sgfl{-webkit-box-align:center;-webkit-align-items:center;align-items:center;width:28px;font-size:17px;color:#df3436;}
+.sgfr{display:-webkit-box;display:-webkit-flex;display:flex;position:relative}
+.sgchfl,.sgfr{-webkit-box-flex:1;-webkit-flex:1 1 auto;flex:1 1 auto}
+.sgchfl,.sgfr{-webkit-box-flex:1;-webkit-flex:1 1 auto;flex:1 1 auto}
+.sgchfl{padding:6px 0;width:0;text-align:left;}
+.f-thide{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;word-break:normal}
+.sgtl{font-size:17px}
+.sginfo{font-size:12px;color:#888;padding: 3px 0;}
+.sgchfr{display:-webkit-box;display:-webkit-flex;display:flex;-webkit-box-align:center;-webkit-align-items:center;align-items:center;padding:0 10px}
+.sgchply{display:inline-block;width:22px;height:22px;background-position:-24px 0}
+.f-bd:after{position:absolute;z-index:2;content:"";top:0;left:0;pointer-events:none;box-sizing:border-box;width:100%;height:100%;-webkit-transform-origin:top left;transform-origin:top left;border:0 solid rgba(0,0,0,.1)}
+.f-bd:after{width:200%;height:200%;-webkit-transform:scale(.5);transform:scale(.5)}
+.f-bd-btm:after{border-bottom-width:1px}
+.m-sglst.active{display: none}
+.m-sglst li{padding-left:10px}
+.m-sglst li, .sgfl {display: -webkit-box;display: -webkit-flex;display: flex;}
+.m-sglst li a{display:flex;width:100%}
 
 </style>
