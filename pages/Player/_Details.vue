@@ -18,9 +18,12 @@
                 <div class="m_audio" ref="audioo">
                     <audio id="audio" :src="$route.params.list_url" autoplay controls="controls"></audio>
                 </div>
-                <div class="download">
-                    <a href="javascript:;" @click="download"> 下载</a>
-                </div>
+                <!-- <div class="download">
+                    <a :href="$route.params.list_url" download="s" > 下载</a>
+                </div> -->
+                <a href="http://1.1.1.1/test.txt" download="test">
+                    <el-button class = "button" size="medium" @click="saveInfo"  round>保存配信息至本地</el-button>
+                </a>
             </div>
         </div>
     </div>
@@ -50,19 +53,19 @@ export default {
             }
         },
         download(e){
-            let url = this.$route.params.list_url; ///当前播放歌曲url路径
-            let _this = this;
-            console.log(this.$route.params.list_id);
-            _this.$axios
-            .get(
-            "https://api.bzqll.com/music/netease/url?key=579621905&id="+this.$route.params.list_id+"&br=999000"
-            )
-            .then(function(response) {
+            // let url = this.$route.params.list_url; ///当前播放歌曲url路径
+            // let _this = this;
+            // console.log(this.$route.params.list_id);
+            // _this.$axios
+            // .get(
+            // "https://api.bzqll.com/music/netease/url?key=579621905&id="+this.$route.params.list_id+"&br=999000"
+            // )
+            // .then(function(response) {
                 
-                console.log(response.data)
-            }).catch(function(error) {
-                console.log(error);
-            });
+            //     console.log(response.data)
+            // }).catch(function(error) {
+            //     console.log(error);
+            // });
         }
     }
 }
