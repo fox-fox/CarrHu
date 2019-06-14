@@ -77,7 +77,7 @@ export default {
             // console.log(id);
             _this.$axios
                 .get(
-                "https://api.bzqll.com/music/netease/songList?key=579621905&id="+id+"&limit=10&offset=0"
+                "https://api.itooi.cn/music/netease/songList?key=579621905&id="+id+"&limit=10&offset=0"
                 )
                 .then(function(response) {
                     _this.Song = response.data.data;
@@ -112,7 +112,7 @@ export default {
 .f-brk {word-wrap: break-word;word-break: break-all;white-space: normal;}
 .list_i{font-size: 14px;color: #666;overflow: hidden}
 
-.pylst_list{}
+
 .u-smtitle{height: 23px;line-height: 23px;padding: 0 10px; font-size: 12px;color: #666;background-color: #eeeff0;}
 .u-song{display: -webkit-box;display: -webkit-flex;display: flex;}
 .u-song .sgi_fl{-webkit-box-align:center;-webkit-align-items:center;align-items:center;-webkit-box-pack:center;-webkit-justify-content:center;justify-content:center;width:40px;font-size:17px;color:#999}

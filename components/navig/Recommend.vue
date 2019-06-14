@@ -33,7 +33,7 @@ export default {
             var _this = this;
             _this.$axios
                 .get(
-                "https://api.bzqll.com/music/netease/hotSongList?key=579621905&cat=全部&limit=10&offset=0"
+                "https://api.itooi.cn/music/netease/hotSongList?key=579621905&cat=全部&limit=10&offset=0"
                 )
                 .then(function(response) {
                     _this.pro = response.data.data;

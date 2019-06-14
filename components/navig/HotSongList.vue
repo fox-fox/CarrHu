@@ -45,7 +45,7 @@ export default {
             var _this = this;
             _this.$axios
                 .get(
-                "https://api.bzqll.com/music/netease/songList?key=579621905&id=3778678&limit=10&offset=0"
+                "https://api.itooi.cn/music/netease/songList?key=579621905&id=3778678&limit=10&offset=0"
                 )
                 .then(function(response) {
                     _this.pro = response.data.data.songs
